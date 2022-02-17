@@ -2,6 +2,7 @@ test:
 	bin/rails test
 
 setup:
+	cp -n .env.example .env || true
 	bin/setup
 	bin/rails db:fixtures:load
 
@@ -34,5 +35,8 @@ heroku-logs:
 	heroku logs --tail
 
 check: lint test
+
+server:
+	bin/rails server
 
 .PHONY: test
