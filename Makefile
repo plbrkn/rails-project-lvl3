@@ -5,6 +5,10 @@ setup:
 	bin/setup
 	bin/rails db:fixtures:load
 
+install:
+	yarn install
+	bundle install
+
 start:
 	heroku local -p 3000
 
