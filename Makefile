@@ -13,14 +13,11 @@ install:
 start:
 	heroku local -p 3000
 
-lint: lint-code lint-style
+lint: lint-code
 
 lint-code:
 	bundle exec rubocop
 	bundle exec slim-lint app/views/
-
-lint-style:
-	npx stylelint "**/*.scss" "!**/vendor/**"
 
 linter-code-fix:
 	bundle exec rubocop -A

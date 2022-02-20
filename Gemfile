@@ -5,7 +5,11 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 ruby '3.0.2'
 
+gem 'active_storage_validations'
+gem 'aws-sdk-s3'
 gem 'bootsnap', '>= 1.4.4', require: false
+gem 'faker'
+gem 'image_processing'
 gem 'jbuilder', '~> 2.7'
 gem 'omniauth-github'
 gem 'omniauth-rails_csrf_protection'
@@ -17,11 +21,6 @@ gem 'simple_form'
 gem 'slim-rails'
 gem 'turbolinks', '~> 5'
 gem 'webpacker', '~> 5.0'
-gem 'rollbar'
-gem 'faker'
-
-gem 'omniauth-github'
-gem 'omniauth-rails_csrf_protection'
 
 group :development, :test do
   gem 'byebug', platforms: %i[mri mingw x64_mingw]
@@ -31,7 +30,6 @@ group :development, :test do
   gem 'rubocop-rails'
   gem 'slim_lint'
   gem 'sqlite3', '~> 1.4'
-  gem 'dotenv-rails'
 end
 
 group :development do
