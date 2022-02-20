@@ -1,2 +1,0 @@
-module Web::AuthHelper
-end

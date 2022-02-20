@@ -2,9 +2,8 @@
 
 module Web
   class AuthController < ApplicationController
-    skip_before_action :verify_authenticity_token, only: :create
-
     def callback
+      Rails.logger.debug auth_hash
       @user = User.find_or_create_by(email: auth_hash.info.email.downcase)
       session[:user_id] = @user.id
       redirect_to '/'
