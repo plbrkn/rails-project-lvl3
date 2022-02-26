@@ -23,6 +23,7 @@ module Web
 
     def show
       @bulletin = Bulletin.find(params[:id])
+      pp @bulletin
     end
 
     private

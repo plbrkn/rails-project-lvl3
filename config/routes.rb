@@ -5,7 +5,7 @@ Rails.application.routes.draw do
     root 'bulletins#index'
 
     resource :sessions, only: %i[new create destroy]
-    resource :bulletins, only: %i[new create show]
+    resources :bulletins, except: :destroy
     resources :users, only: %i[new create]
 
     post 'auth/:provider', to: 'auth#request', as: :auth_request

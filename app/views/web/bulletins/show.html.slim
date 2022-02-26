@@ -1,18 +1,14 @@
 .mb-4
   h2
-    | Bulletins
+    = @bulletin.name
   hr
-= render 'web/bulletins/shared/search-form'
-.row.mt-2
-  - @bulletins.each do |bulletin|
-    .col-3.pt-2
-    .card.shadow-sm
-        = image_tag(rails_blob_path(bulletin.photo), class: 'card-img-top', alt: bulletin.name)
-        .card-body
+.row
+  .col-8
+    = image_tag(rails_blob_path(@bulletin.photo), class: 'img-thumbnail mb-2', alt: @bulletin.name)
+    p = @bulletin.body
+  .col-4
+    .card
+      .card-body
+        h1.h5.card-title
             h3.card-title.h5
-            = link_to bulletin.name, bulletins_path(bulletin)
-            p.card-text = truncate(bulletin.body, length: 100)
-            .card-footer
-              small.text-muted
-                | Created At:
-                = time_ago_in_words(bulletin.created_at)
+              = @bulletin.user.email

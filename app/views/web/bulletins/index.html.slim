@@ -10,7 +10,7 @@
         = image_tag(rails_blob_path(bulletin.photo), class: 'card-img-top', alt: bulletin.name)
         .card-body
             h3.card-title.h5
-            = link_to bulletins_path(bulletin) do
+            = link_to bulletin do
               = bulletin.name
             p.card-text = truncate(bulletin.body, length: 100)
             .card-footer
