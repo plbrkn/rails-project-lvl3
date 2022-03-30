@@ -14,6 +14,7 @@ gem 'jbuilder', '~> 2.7'
 gem 'omniauth-github'
 gem 'omniauth-rails_csrf_protection'
 gem 'puma', '~> 5.0'
+gem 'pundit'
 gem 'rails', '~> 6.1.4', '>= 6.1.4.4'
 gem 'rollbar'
 gem 'sass-rails', '>= 6'
@@ -21,7 +22,6 @@ gem 'simple_form'
 gem 'slim-rails'
 gem 'turbolinks', '~> 5'
 gem 'webpacker', '~> 5.0'
-gem "pundit"
 
 group :development, :test do
   gem 'byebug', platforms: %i[mri mingw x64_mingw]
