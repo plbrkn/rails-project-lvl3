@@ -29,8 +29,6 @@ class Web::BulletinsControllerTest < ActionDispatch::IntegrationTest
 
     assert_response :redirect
 
-    new_bulletin = Bulletin.find_by(name: @attrs[:name])
-
-    # assert { new_bulletin }
+    assert Bulletin.find_by(name: @attrs[:name])
   end
 end
