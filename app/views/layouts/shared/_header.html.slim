@@ -14,6 +14,8 @@
         ul.nav.nav-pills
             - if current_user
                 li.nav-item.me-2
+                    = link_to 'Admin', admin_root_path, class: 'nav-link text-dark'
+                li.nav-item.me-2
                     = link_to 'Sing out', sessions_path(current_user), method: :delete, class: 'nav-link text-dark'
             - else
                 li.nav-item.me-2
