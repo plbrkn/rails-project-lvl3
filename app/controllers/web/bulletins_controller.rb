@@ -2,16 +2,18 @@
 
 module Web
   class BulletinsController < ApplicationController
+    after_action :verify_authorized, except: %i[index show]
     def index
       @bulletins = Bulletin.all.order(created_at: :desc)
-      Rails.logger.debug signed_in?
     end
 
     def new
       @bulletin = Bulletin.new
+      authorize @bulletin
     end
 
     def create
+      authorize Bulletin
       @bulletin = current_user.bulletins.build(bulletin_params)
 
       if @bulletin.save
@@ -23,7 +25,6 @@ module Web
 
     def show
       @bulletin = Bulletin.find(params[:id])
-      pp @bulletin
     end
 
     private
