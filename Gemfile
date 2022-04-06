@@ -5,6 +5,7 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 ruby '3.0.2'
 
+gem 'aasm'
 gem 'active_storage_validations'
 gem 'aws-sdk-s3'
 gem 'bootsnap', '>= 1.4.4', require: false
@@ -22,7 +23,6 @@ gem 'simple_form'
 gem 'slim-rails'
 gem 'turbolinks', '~> 5'
 gem 'webpacker', '~> 5.0'
-gem 'aasm'
 
 group :development, :test do
   gem 'byebug', platforms: %i[mri mingw x64_mingw]

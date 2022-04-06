@@ -30,6 +30,5 @@
                 td = category.id
                 td = category.name
                 td
-                  = link_to "Edit", edit_admin_category_path(category), class: 'me-2'
-                  = link_to "Delete", admin_category_path(category), method: :delete, class: 'text-danger'
-
+                  = link_to 'Edit', edit_admin_category_path(category), class: 'me-2'
+                  = link_to 'Delete', admin_category_path(category), method: :delete, class: 'text-danger'
