@@ -8,6 +8,8 @@ Rails.application.routes.draw do
     resources :bulletins, except: :destroy
     resources :users, only: %i[new create]
 
+    get 'profile', to: 'profiles#index'
+
     namespace :admin do
       root 'home#index'
       resources :categories
