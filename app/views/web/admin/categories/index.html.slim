@@ -1,0 +1,35 @@
+.row
+    .col-md-3
+        ul.nav.flex-column.nav-pills
+            li.nav-item
+                = link_to 'Ads in moderation', new_bulletin_path, class: 'nav-link link-dark'
+            li.nav-item
+                = link_to 'All bulletins', profile_path, class: 'nav-link link-dark'
+            li.nav-item
+                = link_to 'All categories', admin_categories_path, class: 'nav-link link-dark active'
+    .col-md-9
+      h1.h2.mb-4
+        | Categories
+      = link_to 'Add categories', new_admin_category_path
+      - if @categories.empty?
+        p.display-8
+          | Empty
+      - else
+        table.table.table-borderless
+          thead
+            tr
+              th
+                | Id
+              th
+                | Name
+              th
+                | Action
+          tbody
+            - @categories.each do |category|
+              tr
+                td = category.id
+                td = category.name
+                td
+                  = link_to "Edit", edit_admin_category_path(category), class: 'me-2'
+                  = link_to "Delete", admin_category_path(category), method: :delete, class: 'text-danger'
+
