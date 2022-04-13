@@ -1,0 +1,14 @@
+.mb-4
+  h2
+    = @bulletin.name
+  hr
+.row
+  .col-8
+    = image_tag(rails_blob_path(@bulletin.photo), class: 'img-thumbnail mb-2', alt: @bulletin.name)
+    p = @bulletin.body
+  .col-4
+    .card
+      .card-body
+        h1.h5.card-title
+            h3.card-title.h5
+              = @bulletin.user.email

@@ -1,0 +1,17 @@
+.mb-4
+  h2
+    | Add Bulletins
+  hr
+.row.mt-2
+  = simple_form_for(@bulletin) do |f|
+    = f.error_notification
+    = f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present?
+
+    .form-inputs
+      = f.input :name
+      = f.input :body
+      = f.association :category
+      = f.file_field :photo
+
+    .form-actions
+      = f.button :submit, class: 'btn btn-primary mt-3'

@@ -11,3 +11,10 @@ two:
   body: MyString
   category: two
   user: two
+
+under_moderation:
+  category: two
+  user: admin
+  name: <%= Faker::Lorem.sentence %>
+  body: <%= Faker::Lorem.paragraph %>
+  state: under_moderation

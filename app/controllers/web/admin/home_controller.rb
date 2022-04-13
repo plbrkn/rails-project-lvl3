@@ -4,7 +4,7 @@ module Web
   module Admin
     class HomeController < ApplicationController
       def index
-        @bulletins = Bulletin.all.order(created_at: :desc)
+        @bulletins = Bulletin.under_moderation
       end
     end
   end

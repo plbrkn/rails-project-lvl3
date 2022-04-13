@@ -1,19 +1,36 @@
-.mb-4
-  h2
-    | Bulletins
-  hr
-= render 'web/bulletins/shared/search-form'
-.row.mt-2
-  - @bulletins.each do |bulletin|
-    .col-3.pt-2
-    .card.shadow-sm
-        / = image_tag rails_blob_path(bulletin.photo), class: 'card-img-top', alt: bulletin.name
-        .card-body
-            h3.card-title.h5
-            = link_to bulletin do
-              = bulletin.name
-            p.card-text = truncate(bulletin.body, length: 100)
-            .card-footer
-              small.text-muted
-                | Created At:
-                = time_ago_in_words(bulletin.created_at)
+.row
+    .col-md-3
+        ul.nav.flex-column.nav-pills
+            li.nav-item
+                = link_to 'Ads in moderation', admin_root_path, class: 'nav-link link-dark active'
+            li.nav-item
+                = link_to 'All bulletins', admin_bulletins_path, class: 'nav-link link-dark'
+            li.nav-item
+                = link_to 'All categories', admin_categories_path, class: 'nav-link link-dark'
+    .col-md-9
+      - if @bulletins.empty?
+        p.display-8
+          | Empty
+      - else
+        table.table.table-borderless
+          thead
+            tr
+              th
+                | Name
+              th
+                | Created date
+              th
+                | Action
+          tbody
+            - @bulletins.each do |bulletin|
+              tr
+                td
+                  = link_to bulletin.name, bulletin_path(bulletin), class: 'me-2'
+                td
+                  = time_ago_in_words(bulletin.created_at)
+                td
+                  = link_to 'Publish', publish_admin_bulletin_path(bulletin), method: :patch, data: { confirm: 'Are you sure?' }, class: 'me-2'
+                  = link_to 'Reject', reject_admin_bulletin_path(bulletin), method: :patch, data: { confirm: 'Are you sure?' }, class: 'me-2'
+                  = link_to 'Archive', archive_admin_bulletin_path(bulletin), method: :patch, data: { confirm: 'Are you sure?' }, class: 'text-danger'
+
+

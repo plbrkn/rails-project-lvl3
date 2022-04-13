@@ -1,0 +1,33 @@
+.mb-4
+  h2
+    | My Bulletins
+  hr
+  = link_to "Add Bulletin", new_bulletin_path
+.row.mt-2
+  - if @bulletins.empty?
+    p.display-8
+      | Empty
+  - else
+    table.table.table-borderless
+      thead
+        tr
+          th
+            | Name
+          th
+            | State
+          th
+            | Created date
+          th
+            | Action
+      tbody
+        - @bulletins.each do |bulletin|
+          tr
+            td = bulletin.name
+            td = bulletin.aasm.human_state
+            td = time_ago_in_words(bulletin.created_at)
+            td
+              = link_to 'Show', bulletin_path(bulletin), class: 'me-2'
+              - unless bulletin.archived?
+                = link_to 'Archive', archive_bulletin_path(bulletin), method: :patch, data: { confirm: 'Are you sure?' }, class: 'text-dange me-2'
+              - unless bulletin.under_moderation?
+                = link_to 'Moderate', moderate_bulletin_path(bulletin), method: :patch, data: { confirm: 'Are you sure?' }, class: 'text-dange me-2'

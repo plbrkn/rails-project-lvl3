@@ -1,0 +1,38 @@
+.row
+    .col-md-3
+        ul.nav.flex-column.nav-pills
+            li.nav-item
+                = link_to 'Ads in moderation', admin_root_path, class: 'nav-link link-dark'
+            li.nav-item
+                = link_to 'All bulletins', admin_bulletins_path, class: 'nav-link link-dark active'
+            li.nav-item
+                = link_to 'All categories', admin_categories_path, class: 'nav-link link-dark'
+    .col-md-9
+      h1.h2.mb-4
+        | Bulletins
+      - if @bulletins.empty?
+        p.display-8
+          | Empty
+      - else
+        table.table.table-borderless
+          thead
+            tr
+              th
+                | Name
+              th
+                | State
+              th
+                | Created date
+              th
+                | Action
+          tbody
+            - @bulletins.each do |bulletin|
+              tr
+                td
+                  = link_to bulletin.name, bulletin_path(bulletin)
+                td = bulletin.aasm.human_state
+                td = time_ago_in_words(bulletin.created_at)
+                td
+                  = link_to 'Show', bulletin_path(bulletin), class: 'me-2'
+                  - unless bulletin.archived?
+                    = link_to 'Archive', archive_admin_bulletin_path(bulletin), method: :patch, data: { confirm: 'Are you sure?' }, class: 'text-danger'

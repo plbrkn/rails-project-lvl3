@@ -4,7 +4,7 @@ module Web
   class BulletinsController < ApplicationController
     after_action :verify_authorized, except: %i[index show]
     def index
-      @bulletins = Bulletin.all.order(created_at: :desc)
+      @bulletins = Bulletin.published.order(created_at: :desc)
     end
 
     def new
@@ -25,6 +25,32 @@ module Web
 
     def show
       @bulletin = Bulletin.find(params[:id])
+    end
+
+    def moderate
+      bulletin = Bulletin.find(params[:id])
+
+      authorize bulletin
+
+      if bulletin.may_moderate?
+        bulletin.moderate!
+        redirect_to profile_path, notice: 'Bulletin moderated'
+      else
+        render :index, status: :unprocessable_entity
+      end
+    end
+
+    def archive
+      bulletin = Bulletin.find(params[:id])
+
+      authorize bulletin
+
+      if bulletin.may_archive?
+        bulletin.archive!
+        redirect_to profile_path, notice: 'Bulletin archived'
+      else
+        render :index, status: :unprocessable_entity
+      end
     end
 
     private

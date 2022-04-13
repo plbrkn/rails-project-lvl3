@@ -2,9 +2,9 @@
     .col-md-3
         ul.nav.flex-column.nav-pills
             li.nav-item
-                = link_to 'Ads in moderation', new_bulletin_path, class: 'nav-link link-dark'
+                = link_to 'Ads in moderation', admin_root_path, class: 'nav-link link-dark'
             li.nav-item
-                = link_to 'All bulletins', profile_path, class: 'nav-link link-dark'
+                = link_to 'All bulletins', admin_bulletins_path, class: 'nav-link link-dark'
             li.nav-item
                 = link_to 'All categories', admin_categories_path, class: 'nav-link link-dark active'
     .col-md-9
