@@ -32,3 +32,4 @@
                 td
                   = link_to 'Edit', edit_admin_category_path(category), class: 'me-2'
                   = link_to 'Delete', admin_category_path(category), method: :delete, data: { confirm: 'Are you sure?' }, class: 'text-danger'
+    = paginate @categories

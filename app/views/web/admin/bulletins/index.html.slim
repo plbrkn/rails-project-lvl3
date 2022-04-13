@@ -37,3 +37,5 @@
                   = link_to 'Show', bulletin_path(bulletin), class: 'me-2'
                   - unless bulletin.archived?
                     = link_to 'Archive', archive_admin_bulletin_path(bulletin), method: :patch, data: { confirm: 'Are you sure?' }, class: 'text-danger'
+
+    = paginate @bulletins

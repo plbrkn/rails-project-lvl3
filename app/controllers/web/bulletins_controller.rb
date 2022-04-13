@@ -5,7 +5,7 @@ module Web
     after_action :verify_authorized, except: %i[index show]
     def index
       @q = Bulletin.published.order(created_at: :desc).ransack(params[:q])
-      @bulletins = @q.result(distinct: true)
+      @bulletins = @q.result(distinct: true).page(params[:page])
     end
 
     def new

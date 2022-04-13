@@ -2,7 +2,7 @@
   h2
     | My Bulletins
   hr
-  = link_to "Add Bulletin", new_bulletin_path
+  = link_to 'Add Bulletin', new_bulletin_path
   = render 'web/profiles/shared/search_form', query: @q
 .row.mt-2
   - if @bulletins.empty?
@@ -32,3 +32,5 @@
                 = link_to 'Archive', archive_bulletin_path(bulletin), method: :patch, data: { confirm: 'Are you sure?' }, class: 'text-dange me-2'
               - unless bulletin.under_moderation?
                 = link_to 'Moderate', moderate_bulletin_path(bulletin), method: :patch, data: { confirm: 'Are you sure?' }, class: 'text-dange me-2'
+
+  = paginate @bulletins

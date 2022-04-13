@@ -5,7 +5,7 @@ module Web
     class BulletinsController < ApplicationController
       def index
         @q = Bulletin.all.order(created_at: :desc).ransack(params[:q])
-        @bulletins = @q.result(distinct: true)
+        @bulletins = @q.result(distinct: true).page(params[:page])
       end
 
       def archive

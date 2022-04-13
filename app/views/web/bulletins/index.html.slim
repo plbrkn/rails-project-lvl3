@@ -7,7 +7,7 @@
   - @bulletins.each do |bulletin|
     .col-3.pt-2
     .card.shadow-sm
-        / = image_tag rails_blob_path(bulletin.photo), class: 'card-img-top', alt: bulletin.name
+        = image_tag rails_blob_path(bulletin.photo), class: 'card-img-top', alt: bulletin.name
         .card-body
             h3.card-title.h5
             = link_to bulletin do
@@ -17,3 +17,5 @@
               small.text-muted
                 | Created At:
                 = time_ago_in_words(bulletin.created_at)
+
+  = paginate @bulletins

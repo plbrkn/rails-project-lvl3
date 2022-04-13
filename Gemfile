@@ -12,6 +12,7 @@ gem 'bootsnap', '>= 1.4.4', require: false
 gem 'faker'
 gem 'image_processing'
 gem 'jbuilder', '~> 2.7'
+gem 'kaminari'
 gem 'omniauth-github'
 gem 'omniauth-rails_csrf_protection'
 gem 'puma', '~> 5.0'
