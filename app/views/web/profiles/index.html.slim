@@ -3,6 +3,7 @@
     | My Bulletins
   hr
   = link_to "Add Bulletin", new_bulletin_path
+  = render 'web/profiles/shared/search_form', query: @q
 .row.mt-2
   - if @bulletins.empty?
     p.display-8

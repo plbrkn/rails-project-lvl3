@@ -4,7 +4,8 @@ module Web
   class BulletinsController < ApplicationController
     after_action :verify_authorized, except: %i[index show]
     def index
-      @bulletins = Bulletin.published.order(created_at: :desc)
+      @q = Bulletin.published.order(created_at: :desc).ransack(params[:q])
+      @bulletins = @q.result(distinct: true)
     end
 
     def new

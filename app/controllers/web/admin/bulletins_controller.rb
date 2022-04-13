@@ -4,13 +4,12 @@ module Web
   module Admin
     class BulletinsController < ApplicationController
       def index
-        @bulletins = Bulletin.all.order(created_at: :desc)
+        @q = Bulletin.all.order(created_at: :desc).ransack(params[:q])
+        @bulletins = @q.result(distinct: true)
       end
 
       def archive
         bulletin = Bulletin.find(params[:id])
-        pp bulletin
-        pp current_user
         if bulletin.may_archive?
           bulletin.archive!
           redirect_to admin_bulletins_path, notice: 'Bulletin archived'
@@ -23,11 +22,7 @@ module Web
         bulletin = Bulletin.find(params[:id])
 
         if bulletin.may_publish?
-          if bulletin.publish!
-            pp 'Happy'
-          else
-            pp 'Sad'
-          end
+          bulletin.publish!
           redirect_to admin_bulletins_path, notice: 'Bulletin published'
         else
           render :index, status: :unprocessable_entity

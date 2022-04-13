@@ -2,7 +2,7 @@
   h2
     | Bulletins
   hr
-= render 'web/bulletins/shared/search-form'
+= render 'web/bulletins/shared/search_form', query: @q
 .row.mt-2
   - @bulletins.each do |bulletin|
     .col-3.pt-2

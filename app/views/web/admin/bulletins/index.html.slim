@@ -10,6 +10,7 @@
     .col-md-9
       h1.h2.mb-4
         | Bulletins
+      = render 'web/admin/bulletins/shared/search_form', query: @q
       - if @bulletins.empty?
         p.display-8
           | Empty

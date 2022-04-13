@@ -26,8 +26,6 @@ class BulletinPolicy < ApplicationPolicy
   end
 
   def moderate?
-    pp record.user
-    pp record.draft?
     record.user == user && record.draft?
   end
 

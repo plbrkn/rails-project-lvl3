@@ -1,0 +1,11 @@
+.p-3.bg-light
+  = search_form_for query do |f|
+    .row.my-2
+      .col-6
+        = f.input :name_cont, label: false, hint: "asd"
+      .col-4
+        = f.input :category_name_eq, collection: Category.all.map(&:name), label: false, hint: "Choose a category"
+      .col-2
+        = f.button :submit, class: 'btn btn-primary me-2'
+        = link_to 'Reset', bulletins_path, class: 'btn btn-outline-primary'
+
