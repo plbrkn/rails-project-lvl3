@@ -8,8 +8,8 @@
     = f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present?
 
     .form-inputs
-      = f.input :name
-      = f.input :body
+      = f.input :title
+      = f.input :description
       = f.association :category
       = f.file_field :photo
 

@@ -2,7 +2,7 @@
   = search_form_for query, url: profile_path do |f|
     .row.my-2
       .col-6
-        = f.input :name_cont, label: false, hint: 'asd'
+        = f.input :title_cont, label: false, hint: 'asd'
       .col-4
         = f.input :state_eq, collection: Bulletin.aasm.states, label: false, hint: 'Choose a category'
       .col-2

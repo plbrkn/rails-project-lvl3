@@ -1,11 +1,11 @@
 .mb-4
   h2
-    = @bulletin.name
+    = @bulletin.title
   hr
 .row
   .col-8
-    = image_tag(rails_blob_path(@bulletin.photo), class: 'img-thumbnail mb-2', alt: @bulletin.name)
-    p = @bulletin.body
+    = image_tag(rails_blob_path(@bulletin.photo), class: 'img-thumbnail mb-2', alt: @bulletin.title)
+    p = @bulletin.description
   .col-4
     .card
       .card-body

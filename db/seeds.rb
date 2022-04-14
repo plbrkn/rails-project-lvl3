@@ -12,8 +12,8 @@ user = User.create(name: Faker::Name.name, email: 'admin@example.com')
 
 5.times do
   bulletin = Bulletin.new(
-    name: Faker::Lorem.word,
-    body: Faker::Lorem.paragraph,
+    title: Faker::Lorem.word,
+    description: Faker::Lorem.paragraph,
     user_id: user.id,
     category_id: categories.sample.id
   )

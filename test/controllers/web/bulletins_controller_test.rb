@@ -5,8 +5,8 @@ require 'test_helper'
 class Web::BulletinsControllerTest < ActionDispatch::IntegrationTest
   setup do
     @attrs = {
-      name: Faker::Job.title,
-      body: Faker::Lorem.paragraph_by_chars(number: 150),
+      title: Faker::Job.title,
+      description: Faker::Lorem.paragraph_by_chars(number: 150),
       category_id: categories(:one).id,
       photo: fixture_file_upload('cat.jpeg', 'image/jpeg')
     }
@@ -29,6 +29,6 @@ class Web::BulletinsControllerTest < ActionDispatch::IntegrationTest
 
     assert_response :redirect
 
-    assert Bulletin.find_by(name: @attrs[:name])
+    assert Bulletin.find_by(title: @attrs[:title])
   end
 end
