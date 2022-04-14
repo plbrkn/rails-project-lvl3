@@ -1,14 +1,8 @@
 .row
-    .col-md-3
-        ul.nav.flex-column.nav-pills
-            li.nav-item
-                = link_to 'Ads in moderation', admin_root_path, class: 'nav-link link-dark'
-            li.nav-item
-                = link_to 'All bulletins', admin_bulletins_path, class: 'nav-link link-dark'
-            li.nav-item
-                = link_to 'All categories', admin_categories_path, class: 'nav-link link-dark active'
-    .col-md-9
-      h1.h2.mb-4
-        | New Category
-      .row.mt-2
-        = render 'form', category: @category, url: admin_categories_path
+  .col-md-3
+    = render 'web/admin/shared/nav'
+  .col-md-9
+    h1.h2.mb-4
+      = t('category.new_title')
+    .row.mt-2
+      = render 'form', category: @category, url: admin_categories_path

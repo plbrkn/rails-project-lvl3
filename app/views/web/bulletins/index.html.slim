@@ -1,6 +1,6 @@
 .mb-4
   h2
-    | Bulletins
+    = t('bulletin.title')
   hr
 = render 'web/bulletins/shared/search_form', query: @q
 .row.mt-2
@@ -15,7 +15,6 @@
             p.card-text = truncate(bulletin.description, length: 100)
             .card-footer
               small.text-muted
-                | Created At:
-                = time_ago_in_words(bulletin.created_at)
+                = t('bulletin.created_at', time: bulletin.created_at)
 
   = paginate @bulletins

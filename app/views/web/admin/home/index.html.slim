@@ -1,26 +1,20 @@
 .row
     .col-md-3
-        ul.nav.flex-column.nav-pills
-            li.nav-item
-                = link_to 'Ads in moderation', admin_root_path, class: 'nav-link link-dark active'
-            li.nav-item
-                = link_to 'All bulletins', admin_bulletins_path, class: 'nav-link link-dark'
-            li.nav-item
-                = link_to 'All categories', admin_categories_path, class: 'nav-link link-dark'
+      = render 'web/admin/shared/nav'
     .col-md-9
       - if @bulletins.empty?
         p.display-8
-          | Empty
+          = t('empty')
       - else
         table.table.table-borderless
           thead
             tr
               th
-                | Name
+                = t('name')
               th
-                | Created date
+                = t('created_date')
               th
-                | Action
+                = t('action')
           tbody
             - @bulletins.each do |bulletin|
               tr
@@ -29,7 +23,7 @@
                 td
                   = time_ago_in_words(bulletin.created_at)
                 td
-                  = link_to 'Publish', publish_admin_bulletin_path(bulletin), method: :patch, data: { confirm: 'Are you sure?' }, class: 'me-2'
-                  = link_to 'Reject', reject_admin_bulletin_path(bulletin), method: :patch, data: { confirm: 'Are you sure?' }, class: 'me-2'
-                  = link_to 'Archive', archive_admin_bulletin_path(bulletin), method: :patch, data: { confirm: 'Are you sure?' }, class: 'text-danger'
+                  = link_to 'Publish', publish_admin_bulletin_path(bulletin), method: :patch, data: { confirm: t('confirm') }, class: 'me-2'
+                  = link_to 'Reject', reject_admin_bulletin_path(bulletin), method: :patch, data: { confirm: t('confirm') }, class: 'me-2'
+                  = link_to t('archive'), archive_admin_bulletin_path(bulletin), method: :patch, data: { confirm: t('confirm') }, class: 'text-danger'
     = paginate @bulletins

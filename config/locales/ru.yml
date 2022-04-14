@@ -1,0 +1,63 @@
+ru:
+  title: Доска объявлений
+  sign_in_github: Войти в Github
+  sign_in_title: Войти
+  sign_up: Зарегистрироваться
+  reset: Сброс
+  empty: Пусто
+  show: Показать
+  edit: Изменить
+  archive: Заархивировать
+  moderate: Модерация
+  confirm: Вы уверены?
+  delete: Удалить
+  name: Имя
+  state: Статус
+  created_date: Дата создания
+  action: Действия
+  id: Id
+  footer:
+    title: Hexlet
+  nav:
+    home: Домой
+    add_bulletin: Добавить объявление
+    my_bulletins: Мои объявления
+    admin: Адми
+    sing_out: Выйти
+    ads_in_moderation: Объявление на модерации
+    all_bulletins: Все объявления
+    all_categories: Все категории
+  notices:
+    welcome: Удачно
+    goodbye: Прощай
+    error: Ошибка
+    fail: Ошибка
+    bulletin:
+      create: Объявление создан
+      update: Объявление обновлено
+      moderate: Объявление отправлено на модерацию
+      archive: Объявление отправлено в архив
+      publish: Объявление опубликовано
+      reject: Объявление возвращено
+    category:
+      create: Категория создана
+      update: Категория обновлена
+      destroy: Категория удалена
+  bulletin:
+    title: Объявления
+    add_bulletin: Добавить объявление
+    created_at: Объявление было создано %{time}
+    edit_title: Редактировать Объявление
+    add_bulletins: Добавит Объявления
+    hints:
+      name: Искать по имени
+      category: Выберите категорию
+      state: Выберите статус
+  profile:
+    title: Мои Объявления
+    add_bulletin: Добавить Объявление
+  category:
+    title: Категории
+    edit_title: Редактировать Категории
+    new_title: Создать Категорию
+    add_categories: Добавить Категорию

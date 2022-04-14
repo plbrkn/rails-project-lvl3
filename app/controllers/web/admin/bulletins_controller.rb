@@ -12,7 +12,7 @@ module Web
         bulletin = Bulletin.find(params[:id])
         if bulletin.may_archive?
           bulletin.archive!
-          redirect_to admin_bulletins_path, notice: 'Bulletin archived'
+          redirect_to admin_bulletins_path, notice: t('notice.bulletin.archive')
         else
           render :index, status: :unprocessable_entity
         end
@@ -23,7 +23,7 @@ module Web
 
         if bulletin.may_publish?
           bulletin.publish!
-          redirect_to admin_bulletins_path, notice: 'Bulletin published'
+          redirect_to admin_bulletins_path, notice: t('notice.bulletin.publish')
         else
           render :index, status: :unprocessable_entity
         end
@@ -33,7 +33,7 @@ module Web
         bulletin = Bulletin.find(params[:id])
         if bulletin.may_reject?
           bulletin.reject!
-          redirect_to admin_bulletins_path, notice: 'Bulletin rejected'
+          redirect_to admin_bulletins_path, notice: t('notice.bulletin.reject')
         else
           render :index, status: :unprocessable_entity
         end

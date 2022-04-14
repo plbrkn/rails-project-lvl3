@@ -2,23 +2,23 @@
     .d-flex.flex-wrap.align-items-center.py-2.border-bottom
         .navbar.navbar-expand-md.navbar-light.me-auto
             = link_to root_path, class: 'navbar-brand me-md-4'
-                | Bulletin Board
+                = t('title')
             .collapse.navbar-collapse
                 ul.nav.nav-pills.flex-grow-1.navbar-nav.me-auto
                     li.nav-item.me-2
                         = link_to root_path, class: 'nav-link text-dark'
-                            | Home
+                            = t('nav.home')
                         - if current_user
                             li.nav-item.me-2
-                                = link_to 'Add bulletin', new_bulletin_path, class: 'nav-link text-dark'
+                                = link_to t('nav.add_bulletin'), new_bulletin_path, class: 'nav-link text-dark'
                             li.nav-item.me-2
-                                = link_to 'My bulletins', profile_path, class: 'nav-link text-dark'
+                                = link_to t('nav.my_bulletins'), profile_path, class: 'nav-link text-dark'
         ul.nav.nav-pills
             - if current_user
                 li.nav-item.me-2
-                    = link_to 'Admin', admin_root_path, class: 'nav-link text-dark'
+                    = link_to t('nav.admin'), admin_root_path, class: 'nav-link text-dark'
                 li.nav-item.me-2
-                    = link_to 'Sing out', sessions_path(current_user), method: :delete, class: 'nav-link text-dark'
+                    = link_to t('nav.sing_out'), sessions_path(current_user), method: :delete, class: 'nav-link text-dark'
             - else
                 li.nav-item.me-2
-                    = link_to 'Login', auth_request_path(:github), method: :post, class: 'nav-link text-dark'
+                    = link_to t('nav.login'), auth_request_path(:github), method: :post, class: 'nav-link text-dark'

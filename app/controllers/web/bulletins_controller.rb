@@ -18,9 +18,9 @@ module Web
       @bulletin = current_user.bulletins.build(bulletin_params)
 
       if @bulletin.save
-        redirect_to root_path, notice: 'Success'
+        redirect_to root_path, notice: t('notice.bulletin.create')
       else
-        render :new, notice: 'Fail'
+        render :new, notice: t('notice.fail')
       end
     end
 
@@ -38,7 +38,7 @@ module Web
       authorize @bulletin
 
       if @bulletin.update(bulletin_params)
-        redirect_to @bulletin, notice: 'Bulletin was successfully updated.'
+        redirect_to @bulletin, notice: t('notice.bulletin.update')
       else
         render :edit
       end
@@ -51,7 +51,7 @@ module Web
 
       if bulletin.may_moderate?
         bulletin.moderate!
-        redirect_to profile_path, notice: 'Bulletin moderated'
+        redirect_to profile_path, notice: t('notice.bulletin.moderate')
       else
         render :index, status: :unprocessable_entity
       end
@@ -64,7 +64,7 @@ module Web
 
       if bulletin.may_archive?
         bulletin.archive!
-        redirect_to profile_path, notice: 'Bulletin archived'
+        redirect_to profile_path, notice: t('notice.bulletin.archive')
       else
         render :index, status: :unprocessable_entity
       end

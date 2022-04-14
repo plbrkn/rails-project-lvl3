@@ -1,0 +1,1 @@
+first_photo_attachment: <%= ActiveStorage::FixtureSet.blob filename: "cat.jpeg" %>

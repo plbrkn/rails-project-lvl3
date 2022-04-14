@@ -1,25 +1,25 @@
 .mb-4
   h2
-    | My Bulletins
+    = t('profile.title')
   hr
-  = link_to 'Add Bulletin', new_bulletin_path
+  = link_to t('profile.add_bulletin'), new_bulletin_path
   = render 'web/profiles/shared/search_form', query: @q
 .row.mt-2
   - if @bulletins.empty?
     p.display-8
-      | Empty
+      = t('empty')
   - else
     table.table.table-borderless
       thead
         tr
           th
-            | Name
+            = t('name')
           th
-            | State
+            = t('state')
           th
-            | Created date
+            = t('created_date')
           th
-            | Action
+            = t('action')
       tbody
         - @bulletins.each do |bulletin|
           tr
@@ -27,11 +27,11 @@
             td = bulletin.aasm.human_state
             td = time_ago_in_words(bulletin.created_at)
             td
-              = link_to 'Show', bulletin_path(bulletin), class: 'me-2'
-              = link_to 'Edit', edit_bulletin_path(bulletin), class: 'me-2'
+              = link_to t('show'), bulletin_path(bulletin), class: 'me-2'
+              = link_to t('edit'), edit_bulletin_path(bulletin), class: 'me-2'
               - unless bulletin.archived?
-                = link_to 'Archive', archive_bulletin_path(bulletin), method: :patch, data: { confirm: 'Are you sure?' }, class: 'text-dange me-2'
+                = link_to t('archive'), archive_bulletin_path(bulletin), method: :patch, data: { confirm: t('confirm') }, class: 'text-dange me-2'
               - unless bulletin.under_moderation?
-                = link_to 'Moderate', moderate_bulletin_path(bulletin), method: :patch, data: { confirm: 'Are you sure?' }, class: 'text-dange me-2'
+                = link_to t('moderate'), moderate_bulletin_path(bulletin), method: :patch, data: { confirm: t('confirm') }, class: 'text-dange me-2'
 
   = paginate @bulletins
