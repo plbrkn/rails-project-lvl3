@@ -28,6 +28,22 @@ module Web
       @bulletin = Bulletin.find(params[:id])
     end
 
+    def edit
+      @bulletin = Bulletin.find(params[:id])
+      authorize @bulletin
+    end
+
+    def update
+      @bulletin = Bulletin.find(params[:id])
+      authorize @bulletin
+
+      if @bulletin.update(bulletin_params)
+        redirect_to @bulletin, notice: 'Bulletin was successfully updated.'
+      else
+        render :edit
+      end
+    end
+
     def moderate
       bulletin = Bulletin.find(params[:id])
 
