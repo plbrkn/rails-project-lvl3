@@ -1,0 +1,9 @@
+one_photo:
+  name: photo
+  record: one (Bulletin)
+  blob: photo_blob
+
+under_moderation_photo:
+  name: photo
+  record: under_moderation (Bulletin)
+  blob: photo_blob

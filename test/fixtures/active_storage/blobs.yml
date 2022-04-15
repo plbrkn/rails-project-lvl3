@@ -1,0 +1,1 @@
+photo_blob: <%= ActiveStorage::Blob.fixture filename: "cat.jpeg" %>

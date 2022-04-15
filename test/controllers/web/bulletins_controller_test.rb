@@ -45,7 +45,7 @@ class Web::BulletinsControllerTest < ActionDispatch::IntegrationTest
   test 'should archive bulletin' do
     patch archive_bulletin_path(@bulletin)
 
-    # assert_response :redirect
+    assert_response :redirect
 
     @bulletin.reload
     assert @bulletin.archived?

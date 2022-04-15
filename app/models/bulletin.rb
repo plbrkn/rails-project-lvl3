@@ -19,7 +19,7 @@ class Bulletin < ApplicationRecord
     end
 
     event :reject do
-      transitions from: :under_moderation, to: :draft
+      transitions from: :under_moderation, to: :rejected
     end
 
     event :archive do

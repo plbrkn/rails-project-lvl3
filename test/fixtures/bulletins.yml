@@ -7,13 +7,6 @@ one:
   user: one
   state: draft
 
-two:
-  title: <%= Faker::Lorem.sentence %>
-  description: <%= Faker::Lorem.paragraph %>
-  category: two
-  user: two
-  state: draft
-
 under_moderation:
   title: <%= Faker::Lorem.sentence %>
   description: <%= Faker::Lorem.paragraph %>
