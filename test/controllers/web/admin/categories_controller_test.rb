@@ -43,4 +43,12 @@ class Web::Admin::CategoriesControllerTest < ActionDispatch::IntegrationTest
     @category.reload
     assert @attrs[:name] == @category.name
   end
+
+  test 'should delete category' do
+    delete admin_category_path @category
+
+    assert_response :redirect
+
+    assert_not Category.find_by(id: @category.id)
+  end
 end

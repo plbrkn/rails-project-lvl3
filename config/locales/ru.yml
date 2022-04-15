@@ -27,7 +27,7 @@ ru:
     ads_in_moderation: Объявление на модерации
     all_bulletins: Все объявления
     all_categories: Все категории
-  notices:
+  notice:
     welcome: Удачно
     goodbye: Прощай
     error: Ошибка

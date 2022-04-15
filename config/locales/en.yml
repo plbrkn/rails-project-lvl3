@@ -27,7 +27,7 @@ en:
     ads_in_moderation: Ads in moderation
     all_bulletins: All bulletins
     all_categories: All categories
-  notices:
+  notice:
     welcome: Success
     goodbye: Goodbye
     error: Error

@@ -9,15 +9,15 @@ module Web
       user = User.find_by(user_params)
       if user&.admin?
         sign_in user
-        redirect_to admin_root_path, notice: t('notices.welcome')
+        redirect_to admin_root_path, notice: t('notice.welcome')
       else
-        redirect_to new_session_path, notice: t('notices.error')
+        redirect_to new_session_path, notice: t('notice.error')
       end
     end
 
     def destroy
       sign_out
-      redirect_to root_path, notice: t('notices.goodbye')
+      redirect_to root_path, notice: t('notice.goodbye')
     end
 
     def user_params

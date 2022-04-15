@@ -26,16 +26,10 @@ class Web::BulletinsControllerTest < ActionDispatch::IntegrationTest
     assert_response :success
   end
 
-  # test 'should show bulletin' do
-  #   get bulletin_path(@bulletin)
-  #   assert_response :success
-  # end
-
   test 'should create bulletin' do
     post bulletins_path, params: { bulletin: @attrs }
 
-    assert_response :redirect
-
+    assert_redirected_to root_url
     assert Bulletin.find_by(title: @attrs[:title])
   end
 
@@ -48,21 +42,21 @@ class Web::BulletinsControllerTest < ActionDispatch::IntegrationTest
     assert @attrs[:title] == @bulletin.title
   end
 
-  # test 'should archive bulletin' do
-  #   patch archive_bulletin_path(@bulletin)
+  test 'should archive bulletin' do
+    patch archive_bulletin_path(@bulletin)
 
-  #   assert_response :redirect
+    # assert_response :redirect
 
-  #   @bulletin.reload
-  #   assert @bulletin.archived?
-  # end
+    @bulletin.reload
+    assert @bulletin.archived?
+  end
 
-  # test 'should moderate bulletin' do
-  #   patch moderate_bulletin_path(@bulletin)
+  test 'should moderate bulletin' do
+    patch moderate_bulletin_path(@bulletin)
 
-  #   assert_response :redirect
+    assert_response :redirect
 
-  #   @bulletin.reload
-  #   assert @bulletin.under_moderation?
-  # end
+    @bulletin.reload
+    assert @bulletin.under_moderation?
+  end
 end

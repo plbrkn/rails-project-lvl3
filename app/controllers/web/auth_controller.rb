@@ -6,7 +6,7 @@ module Web
       Rails.logger.debug auth_hash
       @user = User.find_or_create_by(email: auth_hash.info.email.downcase)
       session[:user_id] = @user.id
-      redirect_to root_path, notice: t('notices.welcome')
+      redirect_to root_path, notice: t('notice.welcome')
     end
 
     private
