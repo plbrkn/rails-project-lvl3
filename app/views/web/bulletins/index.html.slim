@@ -7,7 +7,7 @@
   - @bulletins.each do |bulletin|
     .col-3.pt-2
     .card.shadow-sm
-        = image_tag rails_blob_path(bulletin.photo), class: 'card-img-top', alt: bulletin.title
+        = image_tag rails_blob_path(bulletin.image), class: 'card-img-top', alt: bulletin.title
         .card-body
             h3.card-title.h5
             = link_to bulletin do

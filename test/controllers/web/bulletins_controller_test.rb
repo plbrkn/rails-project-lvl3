@@ -8,7 +8,7 @@ class Web::BulletinsControllerTest < ActionDispatch::IntegrationTest
       title: Faker::Job.title,
       description: Faker::Lorem.paragraph_by_chars(number: 150),
       category_id: categories(:one).id,
-      photo: fixture_file_upload('cat.jpeg', 'image/jpeg')
+      image: fixture_file_upload('cat.jpeg', 'image/jpeg')
     }
 
     @bulletin = bulletins(:one)

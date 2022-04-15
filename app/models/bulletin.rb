@@ -29,7 +29,7 @@ class Bulletin < ApplicationRecord
 
   belongs_to :category
   belongs_to :user
-  has_one_attached :photo
+  has_one_attached :image
 
-  # validates :photo, attached: true, content_type: %i[png jpg jpeg], size: { less_than: 5.megabytes }
+  validates :image, attached: true, content_type: %i[png jpg jpeg], size: { less_than: 5.megabytes }
 end
