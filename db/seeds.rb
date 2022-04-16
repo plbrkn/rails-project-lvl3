@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-categories = %w[Car House Stuff "Home Staff"]
+categories = %w[Car House Stuff Home]
 
 categories.each do |name|
   Category.create(name: name)
