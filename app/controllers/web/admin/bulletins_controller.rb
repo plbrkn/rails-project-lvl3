@@ -14,7 +14,7 @@ module Web
           bulletin.archive!
           redirect_to admin_bulletins_path, notice: t('notice.bulletin.archive')
         else
-          render :index, status: :unprocessable_entity
+          redirect_to admin_bulletins_path, alert: t('notice.error')
         end
       end
 
@@ -25,7 +25,7 @@ module Web
           bulletin.publish!
           redirect_to admin_bulletins_path, notice: t('notice.bulletin.publish')
         else
-          render :index, status: :unprocessable_entity
+          redirect_to admin_bulletins_path, alert: t('notice.error')
         end
       end
 
@@ -35,7 +35,7 @@ module Web
           bulletin.reject!
           redirect_to admin_bulletins_path, notice: t('notice.bulletin.reject')
         else
-          render :index, status: :unprocessable_entity
+          redirect_to admin_bulletins_path, alert: t('notice.error')
         end
       end
     end

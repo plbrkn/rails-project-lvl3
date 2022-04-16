@@ -20,7 +20,7 @@ module Web
       if @bulletin.save
         redirect_to root_path, notice: t('notice.bulletin.create')
       else
-        render :new, notice: t('notice.fail')
+        render :new
       end
     end
 
@@ -53,7 +53,7 @@ module Web
         bulletin.moderate!
         redirect_to profile_path, notice: t('notice.bulletin.moderate')
       else
-        render :index, status: :unprocessable_entity
+        redirect_to profile_path, alert: t('notice.error')
       end
     end
 
@@ -66,7 +66,7 @@ module Web
         bulletin.archive!
         redirect_to profile_path, notice: t('notice.bulletin.archive')
       else
-        render :index, status: :unprocessable_entity
+        redirect_to profile_path, alert: t('notice.error')
       end
     end
 
