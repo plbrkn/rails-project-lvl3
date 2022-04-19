@@ -23,7 +23,7 @@ en:
     add_bulletin: Add Bulletin
     my_bulletins: My Bulletins
     admin: Admin
-    sing_out: Sing Out
+    sign_out: Sign out
     ads_in_moderation: Ads in moderation
     all_bulletins: All bulletins
     all_categories: All categories
@@ -32,6 +32,8 @@ en:
     goodbye: Goodbye
     error: Error
     fail: Fail
+    only_admin: Only admin can do this
+    only_user: Only user can do this
     bulletin:
       create: Bulletin was successfully created
       update: Bulletin was successfully updated

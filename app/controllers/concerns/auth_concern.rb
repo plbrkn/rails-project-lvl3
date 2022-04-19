@@ -16,8 +16,7 @@ module AuthConcern
   end
 
   def user_not_authorized
-    flash[:alert] = t('pundit.default')
-    redirect_to(request.referer || root_path)
+    redirect_to request.referer || root_path, alert: t('notice.only_admin')
   end
 
   def sign_in(user)
@@ -36,6 +35,6 @@ module AuthConcern
   def authenticate_user!
     return if signed_in?
 
-    redirect_to new_session_path
+    redirect_to request.referer || root_path, alert: t('notice.only_user')
   end
 end

@@ -18,7 +18,7 @@ module Web
       @bulletin = current_user.bulletins.build(bulletin_params)
 
       if @bulletin.save
-        redirect_to root_path, notice: t('notice.bulletin.create')
+        redirect_to profile_path, notice: t('notice.bulletin.create')
       else
         render :new
       end

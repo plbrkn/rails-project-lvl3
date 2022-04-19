@@ -23,7 +23,7 @@ ru:
     add_bulletin: Добавить объявление
     my_bulletins: Мои объявления
     admin: Адми
-    sing_out: Выйти
+    sign_out: Выйти
     ads_in_moderation: Объявление на модерации
     all_bulletins: Все объявления
     all_categories: Все категории
@@ -32,6 +32,8 @@ ru:
     goodbye: Прощай
     error: Ошибка
     fail: Ошибка
+    only_admin: Только администратор может сделать это
+    only_user: Только пользователь может сделать это
     bulletin:
       create: Объявление создан
       update: Объявление обновлено

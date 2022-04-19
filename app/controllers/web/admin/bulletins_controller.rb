@@ -2,7 +2,7 @@
 
 module Web
   module Admin
-    class BulletinsController < ApplicationController
+    class BulletinsController < Web::Admin::ApplicationController
       def index
         @q = Bulletin.all.order(created_at: :desc).ransack(params[:q])
         @bulletins = @q.result(distinct: true).page(params[:page])
@@ -23,9 +23,9 @@ module Web
 
         if bulletin.may_publish?
           bulletin.publish!
-          redirect_to admin_bulletins_path, notice: t('notice.bulletin.publish')
+          redirect_to admin_root_path, notice: t('notice.bulletin.publish')
         else
-          redirect_to admin_bulletins_path, alert: t('notice.error')
+          redirect_to admin_root_path, alert: t('notice.error')
         end
       end
 
@@ -33,9 +33,9 @@ module Web
         bulletin = Bulletin.find(params[:id])
         if bulletin.may_reject?
           bulletin.reject!
-          redirect_to admin_bulletins_path, notice: t('notice.bulletin.reject')
+          redirect_to admin_root_path, notice: t('notice.bulletin.reject')
         else
-          redirect_to admin_bulletins_path, alert: t('notice.error')
+          redirect_to admin_root_path, alert: t('notice.error')
         end
       end
     end

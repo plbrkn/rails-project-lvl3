@@ -6,15 +6,15 @@
 .row.mt-2
   - @bulletins.each do |bulletin|
     .col-3.pt-2
-    .card.shadow-sm
-        = image_tag rails_blob_path(bulletin.image), class: 'card-img-top', alt: bulletin.title
-        .card-body
-            h3.card-title.h5
-            = link_to bulletin do
-              = bulletin.title
-            p.card-text = truncate(bulletin.description, length: 100)
-            .card-footer
-              small.text-muted
-                = t('bulletin.created_at', time: bulletin.created_at)
+      .card.shadow-sm
+          = image_tag rails_blob_path(bulletin.image), class: 'card-img-top', alt: bulletin.title, height: 200
+          .card-body
+              h3.card-title.h5
+              = link_to bulletin do
+                = bulletin.title
+              p.card-text = truncate(bulletin.description, length: 100)
+              .card-footer
+                small.text-muted
+                  = t('bulletin.created_at', time: bulletin.created_at)
 
   = paginate @bulletins

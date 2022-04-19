@@ -7,9 +7,11 @@
       = f.input :title
       = f.input :description
       = f.association :category
-      - if @bulletin.image.representable?
-        = image_tag(@bulletin.image, width: '100', class: 'img-thumbnail mb-2')
-      = f.input :image, as: :file
-
+      .mt-3
+        - if @bulletin.image.representable?
+          = image_tag(@bulletin.image, width: '100', class: 'img-thumbnail mb-2')
+      .form-group
+        = f.label :image, required: true
+        = f.file_field :image, class: 'form-control'
     .form-actions
       = f.button :submit, class: 'btn btn-primary mt-3'

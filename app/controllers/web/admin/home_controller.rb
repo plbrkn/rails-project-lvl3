@@ -2,7 +2,7 @@
 
 module Web
   module Admin
-    class HomeController < ApplicationController
+    class HomeController < Web::Admin::ApplicationController
       def index
         @bulletins = Bulletin.under_moderation.page(params[:page])
       end
