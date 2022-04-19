@@ -29,7 +29,7 @@ class Web::BulletinsControllerTest < ActionDispatch::IntegrationTest
   test 'should create bulletin' do
     post bulletins_path, params: { bulletin: @attrs }
 
-    assert_redirected_to root_url
+    assert_redirected_to profile_url
     assert Bulletin.find_by(title: @attrs[:title])
   end
 

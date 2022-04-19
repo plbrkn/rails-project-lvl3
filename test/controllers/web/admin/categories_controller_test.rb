@@ -9,7 +9,7 @@ class Web::Admin::CategoriesControllerTest < ActionDispatch::IntegrationTest
       name: Faker::Job.title
     }
 
-    sign_in(users(:one))
+    sign_in(users(:admin))
   end
 
   test 'should get index' do
