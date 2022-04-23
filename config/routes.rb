@@ -4,27 +4,30 @@ Rails.application.routes.draw do
   scope module: :web do
     root 'bulletins#index'
 
-    resource :sessions, only: %i[new create destroy]
-    resources :bulletins, except: :destroy do
-      patch 'archive', on: :member
-      patch 'moderate', on: :member
-    end
-    resources :users, only: %i[new create]
-
-    get 'profile', to: 'profiles#index'
-
-    namespace :admin do
-      root 'home#index'
-      resources :categories
-      resources :users, only: %i[index edit update]
-      resources :bulletins, except: :destroy do
-        patch 'publish', on: :member
-        patch 'reject', on: :member
-        patch 'archive', on: :member
-      end
-    end
+    delete 'auth/logout', to: 'auth#logout', as: :logout
 
     post 'auth/:provider', to: 'auth#request', as: :auth_request
     get 'auth/:provider/callback', to: 'auth#callback', as: :callback_auth
+
+    resources :bulletins, except: :destroy do
+      member do
+        patch 'archive'
+        patch 'moderate'
+      end
+    end
+
+    get 'profile', to: 'profiles#show'
+
+    namespace :admin do
+      root 'home#index'
+      resources :categories, except: :show
+      resources :bulletins, only: :index do
+        member do
+          patch 'publish'
+          patch 'reject'
+          patch 'archive'
+        end
+      end
+    end
   end
 end

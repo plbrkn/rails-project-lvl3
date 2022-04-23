@@ -5,8 +5,15 @@ module Web
     def callback
       Rails.logger.debug auth_hash
       @user = User.find_or_create_by(email: auth_hash.info.email.downcase)
-      session[:user_id] = @user.id
+      sign_in(@user)
       redirect_to root_path, notice: t('notice.welcome')
+    rescue ActiveRecord::RecordInvalid
+      redirect_to root_path, notice: t('notice.fail')
+    end
+
+    def logout
+      sign_out
+      redirect_to root_path, notice: t('notice.goodbye')
     end
 
     private

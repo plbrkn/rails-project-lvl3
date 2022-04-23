@@ -26,10 +26,10 @@ class BulletinPolicy < ApplicationPolicy
   end
 
   def moderate?
-    record.user == user && record.draft?
+    record.user == user
   end
 
   def archive?
-    (record.user == user || user&.admin?) && !record.archived?
+    record.user == user
   end
 end

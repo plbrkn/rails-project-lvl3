@@ -3,6 +3,8 @@
 module Web
   class BulletinsController < ApplicationController
     after_action :verify_authorized, except: %i[index show]
+    before_action :authenticate_user!, except: %i[index show]
+
     def index
       @q = Bulletin.published.order(created_at: :desc).ransack(params[:q])
       @bulletins = @q.result(distinct: true).page(params[:page])

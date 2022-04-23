@@ -8,15 +8,17 @@ module AuthConcern
   end
 
   def current_user
-    @current_user ||= User.find(session[:user_id]) if session[:user_id]
+    @current_user ||= User.find_by(id: session[:user_id])
   end
 
   def require_admin!
-    user_not_authorized unless current_user&.admin?
+    return if current_user&.admin?
+
+    redirect_to request.referer || root_path, alert: t('notice.only_admin')
   end
 
   def user_not_authorized
-    redirect_to request.referer || root_path, alert: t('notice.only_admin')
+    redirect_to request.referer || root_path, alert: t('notice.only_user')
   end
 
   def sign_in(user)
@@ -29,7 +31,7 @@ module AuthConcern
   end
 
   def signed_in?
-    !current_user.nil?
+    current_user.present?
   end
 
   def authenticate_user!

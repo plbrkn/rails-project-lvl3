@@ -27,7 +27,7 @@ class Web::Admin::CategoriesControllerTest < ActionDispatch::IntegrationTest
 
     assert_response :redirect
 
-    assert Category.find_by(name: @attrs[:name])
+    assert Category.find_by(@attrs)
   end
 
   test 'should get edit' do
