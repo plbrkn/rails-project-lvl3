@@ -2,7 +2,7 @@
   h2
     = t('bulletin.title')
   hr
-= render 'web/shared/search_form', query: @q, url: bulletins_path
+= render 'web/shared/search_form', query: @q, category: true, url: bulletins_path
 .row.mt-2
   - @bulletins.each do |bulletin|
     .col-3.pt-2

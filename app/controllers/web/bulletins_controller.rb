@@ -2,7 +2,7 @@
 
 module Web
   class BulletinsController < ApplicationController
-    after_action :verify_authorized, except: %i[index show]
+    after_action :verify_authorized, only: %i[edit update moderate archive]
     before_action :authenticate_user!, except: %i[index show]
 
     def index
@@ -12,11 +12,9 @@ module Web
 
     def new
       @bulletin = Bulletin.new
-      authorize @bulletin
     end
 
     def create
-      authorize Bulletin
       @bulletin = current_user.bulletins.build(bulletin_params)
 
       if @bulletin.save

@@ -3,8 +3,12 @@
     .row.my-2
       .col-6
         = f.input :title_cont, label: false, hint: t('bulletin.hints.name')
-      .col-3
-        = f.input :state_eq, collection: Bulletin.aasm.states, label: false, hint: t('bulletin.hints.state')
+      - if category
+        .col-3
+          = f.input :category_name_eq, collection: Category.all.map(&:name), label: false, hint: t('bulletin.hints.category')
+      - else
+        .col-3
+          = f.input :state_eq, collection: Bulletin.aasm.states, label: false, hint: t('bulletin.hints.state')
       .col-3
         = f.button :submit, class: 'btn btn-primary me-2'
         = link_to t('reset'), url, class: 'btn btn-outline-primary'
